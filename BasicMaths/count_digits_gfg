@@ -1,0 +1,15 @@
+ques:Given a number N. Count the number of digits in N which evenly divide N.
+soln:
+int EvenlyDivides(int N)
+{
+  int digit,count=0;
+  int Num=N;
+  while(Num>0)
+{
+  digit=Num%10;
+  if(digit!=0 && N%digit==0)
+  count++;
+  Num=Num/10;
+}
+return count;
+}
