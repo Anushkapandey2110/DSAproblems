@@ -1,0 +1,62 @@
+description:
+Given two numbers A and B. The task is to find out their LCM and GCD.
+
+ 
+
+Example 1:
+
+Input:
+A = 5 , B = 10
+Output:
+10 5
+Explanation:
+LCM of 5 and 10 is 10, while
+thier GCD is 5.
+solution:
+//{ Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+class Solution {
+  public:
+    vector<long long> lcmAndGcd(long long A , long long B) {
+       vector<long long> res(2);  // Vector to store LCM and GCD
+
+        // Calculate GCD using Euclidean algorithm
+        long long a = A, b = B;
+        while (b != 0) {
+            long long temp = b;
+            b = a % b;
+            a = temp;
+        }
+        long long gcd = a;
+
+        // Calculate LCM using the relationship: LCM * GCD = A * B
+        long long lcm = (A / gcd) * B;
+
+        // Store results in the vector
+        res[0] = lcm;
+        res[1] = gcd;
+
+        return res;
+    }
+    
+};
+
+//{ Driver Code Starts.
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        long long A,B;
+        
+        cin>>A>>B;
+
+        Solution ob;
+        vector<long long> ans = ob.lcmAndGcd(A,B);
+        cout<<ans[0]<<" "<<ans[1]<<endl;
+    }
+    return 0;
+}
+// } Driver Code Ends
