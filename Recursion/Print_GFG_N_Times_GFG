@@ -1,0 +1,13 @@
+Description:
+Print GFG n times without the loop.
+
+
+solution:
+ void printGfg(int N) {
+        if(N<=0)
+        return;
+        cout << "GFG" << " ";
+        N--;
+        printGfg(N);
+        
+    }
