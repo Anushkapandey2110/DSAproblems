@@ -1,0 +1,55 @@
+description:
+A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+
+Given a string s, return true if it is a palindrome, or false otherwise.
+
+ 
+
+Example 1:
+
+Input: s = "A man, a plan, a canal: Panama"
+Output: true
+Explanation: "amanaplanacanalpanama" is a palindrome.
+Example 2:
+
+Input: s = "race a car"
+Output: false
+Explanation: "raceacar" is not a palindrome.
+Example 3:
+
+Input: s = " "
+Output: true
+Explanation: s is an empty string "" after removing non-alphanumeric characters.
+Since an empty string reads the same forward and backward, it is a palindrome.
+
+solution:
+the first approach might be removing the spaces but non alphanumeric characters also contain punctuations so it will not pass all the test cases, good approach is to check
+for characters, numbers and push them into a new string (also convert uppercase letters to lowercase letters) , and then take a loop till half of the arrays and check if corresponding first
+and last characters are matching. (also there is a bool is alnum() function to directly check rather than manually checking for alphabets and numbers seperately)
+
+
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        string palin;
+        for(auto i : s) {
+            // Check for uppercase letters
+            if(i >= 'A' && i <= 'Z') {
+                palin.push_back(tolower(i)); // Convert to lowercase and add to palin
+            }
+            // Check for lowercase letters and digits
+            else if((i >= 'a' && i <= 'z') || (i >= '0' && i <= '9')) {
+                palin.push_back(i); // Add to palin as is
+            }
+        }
+
+        int n = palin.length();
+        for(int j = 0; j < n / 2; j++) {
+            // Check if the characters from start and end do not match
+            if(palin[j] != palin[n - j - 1]) {
+                return false; // Not a palindrome
+            }
+        }
+        return true; // It is a palindrome
+    }
+};
