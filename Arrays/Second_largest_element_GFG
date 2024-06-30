@@ -39,8 +39,9 @@ solution:
 	    return max2;
 	}*/ //my approach,not good since the original array is being manipulated
 
-
-	 int slarge=-1; //better approach
+// brute force: sorting the array and then traversing through the array from end and find for element < largest worst case: O(Nlog(N)+N)
+//better approach: two traversals through the array , one for finding the largest element , another for second largest which is < largest O(2N) 
+	 int slarge=-1; //optimal approach
 	int large=arr[0];
 	for(int i=0;i<n;i++)
 	{
