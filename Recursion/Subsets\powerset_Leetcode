@@ -1,0 +1,47 @@
+description:
+Given an integer array nums of unique elements, return all possible 
+subsets
+ (the power set).
+
+The solution set must not contain duplicate subsets. Return the solution in any order.
+
+ 
+
+Example 1:
+
+Input: nums = [1,2,3]
+Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+Example 2:
+
+Input: nums = [0]
+Output: [[],[0]]
+ 
+
+Constraints:
+
+1 <= nums.length <= 10
+-10 <= nums[i] <= 10
+All the numbers of nums are unique.
+solution:
+//The approach is a recursive function which works for two cases of taking the number and not taking the number 
+     vector <vector<int>> result;// to store the final result
+     void allsubsets(int ind,vector<int> subset,vector<int> &nums)//the recursive function
+     {
+        if(ind>=nums.size()) //base condition
+        {
+            result.push_back(subset);
+            return ;
+        }
+        subset.push_back(nums[ind]);//case of take
+        allsubsets(ind+1,subset,nums);
+        subset.pop_back();//case of not take
+        allsubsets(ind+1,subset,nums);
+     }
+    vector<vector<int>> subsets(vector<int>& nums) {
+        
+        int n = nums.size();
+        vector <int> subset;
+       
+        allsubsets(0,subset,nums);
+        return result;        
+    }
