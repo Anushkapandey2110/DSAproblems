@@ -40,7 +40,7 @@ public:
         {
             perm.push_back(nums[i]);
             mark[i] = 1;
-            permutations(nums, perm, mark, ans);
+            permutations(nums, perm, mark, ans);  //even the pop and unmarking are in the else part because these things have to be done only when an element goes in the vector , if these two would have been out of else they wouldf be executed even for cases where map[i]=1 
             perm.pop_back();
             mark[i]=0;
         }
