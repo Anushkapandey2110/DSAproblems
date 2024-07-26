@@ -1,0 +1,26 @@
+//this solution uses much less space complexity
+class Solution {
+public:
+ void permutations(vector<int>& nums, int ind,  vector<vector<int>> &ans)
+ {
+    if( ind == nums.size())
+    {
+        ans.push_back(nums);
+        return;
+    }
+    for(int i=ind; i<nums.size(); i++)
+    {
+        swap(nums[ind],nums[i]);
+        permutations(nums, ind+1, ans); //ind is serving as a pointer
+        swap(nums[ind], nums[i]);//to restore the originsal array when coming back and going to another option
+    }
+ }
+ 
+public:
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int>> ans;
+
+        permutations(nums, 0, ans);
+        return ans;
+    }
+};
