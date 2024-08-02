@@ -56,3 +56,37 @@ public:
             nums[j]=2;
         }
     }
+optimal:
+class Solution {
+public:
+//this is a Dutch National Flag (DNF) algo, in which we take three pointerslow,mid and high
+//there are three rules : 1. form index 0 to low-1  , all entries will be zero(extreme left)
+//2.from low to mid-1 there will be 1s
+//3. from high+1 to n-1 there will be 2s(extreme right )
+//this leaves us with an unsorted portion of mid to high , we will have to sort this
+//for sorting we operated with either arr[mid] or arr[high] and we aim on shrinking the mid to high region till all of the array is sorted
+    void sortColors(vector<int>& nums) {
+        int low=0;
+        int mid=0;
+        int high =nums.size()-1;
+        for(int i=0;i<nums.size();i++)
+        {
+            if(nums[mid] == 0)
+            {
+                swap(nums[low],nums[mid]);
+                mid++;
+                low++;
+            }
+            else if(nums[mid] == 1)
+            {
+                mid++;
+            }
+            else if(nums[mid] == 2)
+            {
+                swap(nums[mid],nums[high]);
+                high--;
+            }
+        }
+     
+    }
+};
