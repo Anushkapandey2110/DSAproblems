@@ -26,7 +26,9 @@ nums[i] is either 0, 1, or 2.
 
 Follow up: Could you come up with a one-pass algorithm using only constant extra space?
 
-solution (brute force):
+(brute force:sorting using any of the sorting algos)
+solution:
+//better 
 public:
     void sortColors(vector<int>& nums) {
         int c0=0;
